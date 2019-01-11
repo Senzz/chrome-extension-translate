@@ -64,6 +64,29 @@ const baseDevConfig = () => ({
           }
         }
       ]
+    }, {
+      test: /\.less$/,
+      use: [
+        'style-loader',
+        'css-loader?modules&sourceMap&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]',
+        'less-loader',
+        {
+          loader: 'postcss-loader',
+          options: {
+            plugins: () => [autoprefixer]
+          }
+        }
+      ]
+    }, {
+      test: /\.(png|jpg|gif)$/,
+      use: [
+        {
+          loader: 'file-loader',
+          options: {
+            outputPath: 'assets'
+          }
+        }
+      ]
     }]
   }
 });
